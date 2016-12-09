@@ -122,11 +122,11 @@
     <div class="row">
 
         <div ng-repeat="source in model.newssources" class="col-md-6 portfolio-item">
-            <a href="#">
+            <a ng-click="model.getNewsFeeds(source)">
                 <img class="img-responsive" src="{{source.urlsToLogos.small}}" alt="">
             </a>
             <h3>
-                <a ng-click="model.getNews(source)">{{source.name}}</a>
+                <a ng-click="model.getNewsFeeds(source)">{{source.name}}</a>
             </h3>
             <p>{{source.description}}</p>
         </div>

@@ -5,26 +5,26 @@
 (function() {
     angular
         .module("NewsApp")
-        .controller("NewsfeedsController", NewsfeedsController);
+        .controller("NewsSourcesController", NewsSourcesController);
 
-    function NewsfeedsController($routeParams, $location, NewsService)
+    function NewsSourcesController($routeParams, $location, NewsSourcesService)
     {
         console.log("inside newsfeeds controller");
         var vm = this;
 
-        var promise = NewsService.fetchAllSources();
+        var promise = NewsSourcesService.fetchAllSources();
         promise.success(function (sources) {
             vm.sources = sources;
             vm.countries = getCountries(sources);
             vm.categories = getCategories(sources);
             vm.getSources = getSources;
-            vm.getNews = getNews;
+            vm.getNewsFeeds = getNewsFeeds;
         });
 
-        function getNews(newsSource)
+        function getNewsFeeds(newsSource)
         {
             console.log(newsSource);
-            $location.url("/newsfeeds/" + newsSource + "/");
+            $location.url("/sources/"+ sid + "/newsfeeds");
         }
 
         // returns the news sources as per selected country and category

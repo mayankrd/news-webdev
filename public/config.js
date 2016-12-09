@@ -9,8 +9,14 @@
         console.log("inside route provider");
         $routeProvider
 
-            .when("/news", {
-                templateUrl: "/views/newsfeeds.view.client.html",
+            .when("/sources", {
+                templateUrl: "/views/sources/newsSources.view.client.html",
+                controller: "NewsSourcesController",
+                controllerAs: "model"
+            })
+
+            .when("/sources/:lan/:cat/:sid", {
+                templateUrl: "/views/newsFeeds.view.client.html",
                 controller: "NewsfeedsController",
                 controllerAs: "model"
             })
@@ -22,8 +28,8 @@
             })
 
             .when("/", {
-                templateUrl: "/views/newsfeeds.view.client.html",
-                controller: "NewsfeedsController",
+                templateUrl: "/views/sources/newsSources.view.client.html",
+                controller: "NewsSourcesController",
                 controllerAs: "model"
             });
     }

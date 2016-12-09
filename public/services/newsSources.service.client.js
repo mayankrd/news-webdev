@@ -5,9 +5,9 @@
 (function (){
     angular
         .module("NewsApp")
-        .factory("NewsService", NewsService)
+        .factory("NewsSourcesService", NewsSourcesService)
 
-    function NewsService($http) {
+    function NewsSourcesService($http) {
 
         var api = {
 
