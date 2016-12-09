@@ -15,15 +15,15 @@
                 controllerAs: "model"
             })
 
-            .when("/sources/:lan/:cat/:sid", {
-                templateUrl: "/views/newsFeeds.view.client.html",
-                controller: "NewsfeedsController",
+            .when("/sources/:cnt/:cat/:sid", {
+                templateUrl: "/views/feeds/newsFeeds.view.client.html",
+                controller: "NewsFeedsController",
                 controllerAs: "model"
             })
 
             .when("/demo", {
                 templateUrl: "/views/demo.html",
-                controller: "NewsfeedsController",
+                controller: "NewsFeedsController",
                 controllerAs: "model"
             })
 

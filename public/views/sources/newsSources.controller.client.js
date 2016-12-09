@@ -9,7 +9,7 @@
 
     function NewsSourcesController($routeParams, $location, NewsSourcesService)
     {
-        console.log("inside newsfeeds controller");
+        console.log("inside news sources controller");
         var vm = this;
 
         var promise = NewsSourcesService.fetchAllSources();
@@ -24,7 +24,10 @@
         function getNewsFeeds(newsSource)
         {
             console.log(newsSource);
-            $location.url("/sources/"+ sid + "/newsfeeds");
+            var cnt = newsSource.country;
+            var cat = newsSource.category;
+            var sid = newsSource.id;
+            $location.url("/sources/"+ cnt + "/" + cat + "/" + sid);
         }
 
         // returns the news sources as per selected country and category
