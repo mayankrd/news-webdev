@@ -28,14 +28,14 @@
             })
 
             .when("/login", {
-                templateUrl: "/views/user/login.view.client.html",
+                templateUrl: "/views/user/login/login.view.client.html",
                 controller: "NewsFeedsController",
                 controllerAs: "model"
             })
 
             .when("/register", {
-                templateUrl: "/views/user/register.view.client.html",
-                controller: "NewsFeedsController",
+                templateUrl: "/views/user/register/register.view.client.html",
+                controller: "RegisterUserController",
                 controllerAs: "model"
             })
 
