@@ -4,3 +4,7 @@
     margin-bottom: 5px;
     position: static;
 }
+
+body {
+    padding-top: 50px;
+}

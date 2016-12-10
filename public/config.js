@@ -27,6 +27,18 @@
                 controllerAs: "model"
             })
 
+            .when("/login", {
+                templateUrl: "/views/user/login.view.client.html",
+                controller: "NewsFeedsController",
+                controllerAs: "model"
+            })
+
+            .when("/register", {
+                templateUrl: "/views/user/register.view.client.html",
+                controller: "NewsFeedsController",
+                controllerAs: "model"
+            })
+
             .when("/demo", {
                 templateUrl: "/views/demo.html",
                 controller: "NewsFeedsController",

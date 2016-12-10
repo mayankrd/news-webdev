@@ -7,7 +7,7 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.html">Latest News</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,8 +25,11 @@
                 <li>
                     <a href="contact.html">Contact</a>
                 </li>
+                <a class="navbar-brand" href="#login">Login</a>
             </ul>
         </div>
+
+
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
@@ -65,55 +68,12 @@
 
                         <button ng-click="model.getSources(model.selectedCountry, model.selectedCategory)" type="button" class="btn btn-default btn-success">Go!</button>
 
-                        <!--<div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                Country
-                                <span class="caret"></span>
-                            </button>
-
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="country in model.countries"><a ng-model="model.country" href="">{{country}}</a></li>
-                            </ul>
-                        </div>-->
-
-                       <!-- <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                Category
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-
-                                <li ng-model="model.category"
-                                    ng-repeat="category in model.categories">
-                                    <a ng-model="model.category" href="">{{category}}</a>>
-                                </li>
-
-                            </ul>
-                        </div>-->
-
-                       <!-- <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                News Source
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Dropdown link</a></li>
-                                <li><a href="#">Dropdown link</a></li>
-                            </ul>
-                        </div>-->
-
-
                     </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </header>
 
@@ -134,110 +94,8 @@
     </div>
 </div>
 <!-- /.row -->
-
-<!-- Main Content -->
-<!--
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-preview">
-
-                <a href="post.html">
-                    <h4>{{model.categories}}</h4>
-                    <h2 class="post-title">
-                        Man must explore, and this is exploration at its greatest
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Problems look mighty small from 150 miles up
-                    </h3>
-                </a>
-
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                    </h2>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Science has not yet mastered prophecy
-                    </h2>
-                    <h3 class="post-subtitle">
-                        We predict too much for the next year and yet far too little for the next ten.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Failure is not an option
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-            </div>
-            <hr>
-            &lt;!&ndash; Pager &ndash;&gt;
-            <ul class="pager">
-                <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
--->
-
 <hr>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                        </a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>
