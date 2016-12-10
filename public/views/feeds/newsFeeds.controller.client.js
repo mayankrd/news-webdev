@@ -29,7 +29,7 @@
         });
 
         function dispNewsDetails(article) {
-            $window.articleClicked = article;
+            localStorage.setItem("articleClicked", JSON.stringify(article));
             $location.url("/sources/"+ cnt + "/" + cat + "/" + sid + "/article");
         }
     };
