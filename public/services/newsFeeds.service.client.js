@@ -17,7 +17,8 @@
 
         function fetchNewsById(sourceId) {
 
-            var url = 'https://newsapi.org/v1/articles?source=' + sourceId + '&apiKey=bcb8944e7062461c9985724b44d83dfb';
+            var url = 'https://newsapi.org/v1/articles?source=' + sourceId + '&sortBy=latest&apiKey=bcb8944e7062461c9985724b44d83dfb';
+            //https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=
             return $http.get(url);
         }
     }

@@ -21,6 +21,12 @@
                 controllerAs: "model"
             })
 
+            .when("/sources/:cnt/:cat/:sid/article", {
+                templateUrl: "/views/article/newsArticle.view.client.html",
+                controller: "NewsArticleController",
+                controllerAs: "model"
+            })
+
             .when("/demo", {
                 templateUrl: "/views/demo.html",
                 controller: "NewsFeedsController",

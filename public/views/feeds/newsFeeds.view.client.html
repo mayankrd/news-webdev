@@ -38,8 +38,8 @@
     <!-- Page Header -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Page Heading
-                <small>Secondary Text</small>
+            <h1 class="page-header">{{model.newsFeeds.source}}
+                <small>Latest News</small>
             </h1>
         </div>
     </div>
@@ -47,48 +47,16 @@
     <!-- Projects Row -->
     <div class="row">
         <div ng-repeat="article in model.newsFeeds.articles" class="col-md-4 portfolio-item">
-            <a href="#">
-                <img class="img-responsive" src=article.urlToImage alt="">
-            </a>
+
+                <img class="img-responsive" src={{article.urlToImage}} alt="">
             <h3>
-                <a href="#">{{article.title}}</a>
+                <a ng-click="model.dispNewsDetails(article)">{{article.title}}</a>
             </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
     </div>
     <!-- /.row -->
 
     <hr>
-
-    <!-- Pagination -->
-    <div class="row text-center">
-        <div class="col-lg-12">
-            <ul class="pagination">
-                <li>
-                    <a href="#">&laquo;</a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">&raquo;</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /.row -->
 
     <hr>
 
