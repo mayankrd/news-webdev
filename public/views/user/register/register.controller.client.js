@@ -12,16 +12,18 @@
         var vm = this;
 
         function init() {
-            vm.register = register
+            vm.register = register;
         }
         init();
 
         function register(user) {
-            console.log(user);
-            var promise = UserService.createUser(user);
-            promise.success(function (response) {
-                console.log(response);
-            })
+            if(typeof user.username !== "undefined" && typeof user.password !== "undefined" && typeof user.name !== "undefined")
+            {
+                var promise = UserService.createUser(user);
+                promise.success(function (response) {
+                    console.log(response);
+                })
+            }
         }
 
     };

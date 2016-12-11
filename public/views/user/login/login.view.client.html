@@ -8,9 +8,12 @@
                 <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                      alt="">
                 <form class="form-signin">
-                    <input type="text" class="form-control" placeholder="Email" required autofocus>
-                    <input type="password" class="form-control" placeholder="Password" required>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    <input ng-model="user.username" type="text" class="form-control" placeholder="Username" required autofocus>
+                    <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required>
+                    <div ng-show="model.alert" class="alert alert-danger">
+                        Invalid username or password !
+                    </div>
+                    <button ng-click="model.findUserByCredentials(user)" class="btn btn-lg btn-primary btn-block" type="submit">
                         Sign in</button>
                     <!--<label class="checkbox pull-left">
                         <input type="checkbox" value="remember-me">

@@ -11,9 +11,9 @@
         var api = {
 
             // method declarations
-            createUser : createUser
-            /*findUserByCredentials : findUserByCredentials,
-            findAllUsers: findAllUsers,
+            createUser : createUser,
+            findUserByCredentials : findUserByCredentials
+            /*findAllUsers: findAllUsers,
             findUserById: findUserById,
             updateUser : updateUser,
             deleteUser : deleteUser,*/
@@ -27,8 +27,8 @@
             return $http.post(url, user);
         }
 
-        function findUserByCredentials(username, password){
-            return $http.get('/api/admin?username='+username +'&password=' +password);
+        function findUserByCredentials(user){
+            return $http.post('api/getUserByCredentials', user);
         }
 
         function findAllUsers(callback)

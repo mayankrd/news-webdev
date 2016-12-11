@@ -15,6 +15,12 @@
                 controllerAs: "model"
             })
 
+            .when("/sources/:uid", {
+                templateUrl: "/views/sources/newsSources.view.client.html",
+                controller: "NewsSourcesController",
+                controllerAs: "model"
+            })
+
             .when("/sources/:cnt/:cat/:sid", {
                 templateUrl: "/views/feeds/newsFeeds.view.client.html",
                 controller: "NewsFeedsController",
@@ -29,7 +35,7 @@
 
             .when("/login", {
                 templateUrl: "/views/user/login/login.view.client.html",
-                controller: "NewsFeedsController",
+                controller: "LoginUserController",
                 controllerAs: "model"
             })
 

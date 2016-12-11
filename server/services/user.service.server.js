@@ -8,6 +8,8 @@ module.exports = function (app, model) {
     console.log("inside user server service");
 
     app.post('/api/user', createUser);
+    app.post('/api/getUserByCredentials', getUserByCredentials);
+
    /* app.get('/api/admin', findAllUsers);
     app.get('/api/admin/:uid', findUserById);
     app.put('/api/admin/:uid', updateUser);
@@ -30,11 +32,11 @@ module.exports = function (app, model) {
     }
 
     function getUserByCredentials(req, res){
+        var user = req.body;
         var credentials = {
-            "username": req.query.username,
-            "password": req.query.password
+            "username": user.username,
+            "password": user.password
         };
-
         UserModel.findUserByCredentials(credentials)
             .then(
                 function(doc){
