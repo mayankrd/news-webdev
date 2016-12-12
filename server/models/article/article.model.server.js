@@ -30,7 +30,7 @@ module.exports = function(app, mongoose) {
         var deferred = q.defer();
         var article = {
             "article": ipArticle.article,
-            "comments": ipUser.comments
+            "comments": ipArticle.comments
         };
         ArticleModel.create(ipArticle, function(err, doc){
             if(err){
@@ -67,7 +67,7 @@ module.exports = function(app, mongoose) {
                 deferred.resolve(doc);
             }
         });
-        console.log("user promise");
+        console.log("article promise");
         console.log(deferred.promise);
         return deferred.promise;
     }

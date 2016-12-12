@@ -6,17 +6,17 @@
         .module("NewsApp")
         .controller("NewsArticleController", NewsArticleController);
 
-    function NewsArticleController($routeParams, $location, NewsFeedsService, $window)
+    function NewsArticleController($routeParams, $location, NewsArticleService, $window)
     {
         console.log("inside news article controller");
         var vm = this;
         //var article = $window.articleClicked;
-        var article = JSON.parse(localStorage.getItem("articleClicked"));
-        console.log("article");
-        console.log(article);
+        var articleStored = JSON.parse(localStorage.getItem("articleClicked"));
+        console.log("articleStored");
+        console.log(articleStored);
 
         function init() {
-            vm.article = article;
+            vm.article = articleStored;
             vm.sourceId = $routeParams.sid;
             vm.gotoArticle = gotoArticle;
             vm.addArticleToFavorites = addArticleToFavorites;
@@ -24,7 +24,13 @@
         init();
         
         function addArticleToFavorites() {
-            
+            var article = {"article": articleStored, "comments":[]};
+            console.log("arti");
+            console.log(article);
+                var promise = NewsArticleService.createArticle(article);
+                promise.success(function (response) {
+                    console.log(response);
+                })
         }
 
         function gotoArticle(articleUrl) {

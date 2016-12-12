@@ -54,7 +54,7 @@ module.exports = function (app, model) {
         ArticleModel.findArticleById(artId)
             .then(
                 function(doc){
-                    user = doc;
+                    article = doc;
                     console.log("current user");
                     console.log(article);
                     res.json(article);
@@ -82,7 +82,7 @@ module.exports = function (app, model) {
     function createArticle(req, res){
         var article = req.body;
         console.log(article);
-        ArticleModel.createArticle(user)
+        ArticleModel.createArticle(article)
             .then(
                 function(doc){
                     article = doc;
