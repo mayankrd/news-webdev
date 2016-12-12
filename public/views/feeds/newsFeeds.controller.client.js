@@ -9,7 +9,7 @@
 
     function NewsFeedsController($routeParams, $location, NewsFeedsService, $window)
     {
-        console.log("inside news sources controller");
+        console.log("inside news feeds controller");
         var vm = this;
         var cnt = $routeParams.cnt;
         var cat = $routeParams.cat;
@@ -29,8 +29,15 @@
         });
 
         function dispNewsDetails(article) {
+            console.log(article);
+            var userId = $routeParams.uid;
+            console.log(userId);
             localStorage.setItem("articleClicked", JSON.stringify(article));
-            $location.url("/sources/"+ cnt + "/" + cat + "/" + sid + "/article");
+            if(typeof userId !== "undefined"){
+                $location.url("/sources/"+ userId + "/" + cnt + "/" + cat + "/" + sid + "/article");
+            }
+            else
+                $location.url("/sources/"+ cnt + "/" + cat + "/" + sid + "/article");
         }
     };
 

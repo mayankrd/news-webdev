@@ -22,6 +22,7 @@
                 var promise = UserService.createUser(user);
                 promise.success(function (response) {
                     console.log(response);
+                    $location.url('/dashboard');
                 })
             }
         }

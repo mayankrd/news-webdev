@@ -17,9 +17,27 @@
             vm.sources = sources;
             vm.countries = getCountries(sources);
             vm.categories = getCategories(sources);
+        });
+
+        function init() {
             vm.getSources = getSources;
             vm.getNewsFeeds = getNewsFeeds;
-        });
+            vm.setUser = setUser($routeParams.uid);
+        }
+        init();
+        
+        function setUser(userId) {
+            console.log("called");
+            console.log(userId);
+            if(typeof userId === "undefined"){
+                console.log("inside");
+                vm.logoutLink = false;
+            }
+            else {
+                vm.logoutLink = true;
+            }
+
+        }
 
         function getNewsFeeds(newsSource)
         {
@@ -27,7 +45,12 @@
             var cnt = newsSource.country;
             var cat = newsSource.category;
             var sid = newsSource.id;
-            $location.url("/sources/"+ cnt + "/" + cat + "/" + sid);
+            var userId = $routeParams.uid;
+            if(typeof userId !== "undefined"){
+                $location.url("/sources/"+ userId + "/" + cnt + "/" + cat + "/" + sid);
+            }
+            else
+                $location.url("/sources/"+ cnt + "/" + cat + "/" + sid);
         }
 
         // returns the news sources as per selected country and category
