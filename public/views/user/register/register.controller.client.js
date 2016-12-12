@@ -17,12 +17,13 @@
         init();
 
         function register(user) {
+            user.email = "";
             if(typeof user.username !== "undefined" && typeof user.password !== "undefined" && typeof user.name !== "undefined")
             {
                 var promise = UserService.createUser(user);
                 promise.success(function (response) {
                     console.log(response);
-                    $location.url('/dashboard');
+                    $location.url('/profile');
                 })
             }
         }

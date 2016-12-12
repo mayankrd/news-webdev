@@ -1,9 +1,7 @@
 /**
  * Created by mayank on 12/10/16.
  */
-/**
- * Created by rohitbegani on 11/7/16.
- */
+
 var q = require('q');
 var mongoose = require('mongoose');
 
@@ -34,7 +32,8 @@ module.exports = function(app, mongoose) {
         var user = {
             "username": ipUser.username,
             "password": ipUser.password,
-            "name": ipUser.name
+            "name": ipUser.name,
+            "email": ipUser.email
         };
         UserModel.create(ipUser, function(err, doc){
             if(err){
@@ -97,7 +96,9 @@ module.exports = function(app, mongoose) {
             username: user.username,
             password: user.password,
             name: user.name,
-            email: user.email
+            email: user.email,
+            favorites: user.articles,
+            comments: user.comments
         }, function(err, doc){
             if(err){
                 deferred.reject(err);
