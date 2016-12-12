@@ -1,16 +1,23 @@
 /**
- * Created by mayank on 10/17/16.
+ * Created by mayank on 12/11/16.
  */
 
 (function() {
     angular
         .module("NewsApp")
-        .controller("NewsSourcesController", NewsSourcesController);
+        .controller("HeaderController", HeaderController);
 
-    function NewsSourcesController($routeParams, $location, NewsSourcesService)
+    function HeaderController($routeParams, $location, NewsSourcesService)
     {
-        console.log("inside news sources controller");
+        console.log("inside HeaderController");
         var vm = this;
+
+        var promise = NewsSourcesService.fetchAllSources();
+        promise.success(function (sources) {
+            vm.sources = sources;
+            vm.countries = getCountries(sources);
+            vm.categories = getCategories(sources);
+        });
 
         function init() {
             vm.getSources = getSources;
@@ -19,23 +26,6 @@
         }
         init();
 
-        var promise = NewsSourcesService.fetchAllSources();
-            promise.success(function (sources) {
-                vm.sources = sources;
-                vm.countries = getCountries(sources);
-                vm.categories = getCategories(sources);
-
-                function loadSourcesFromNavbar() {
-                    var category = $routeParams.category;
-                    if(typeof category !== "undefined"){
-                        getSources(category);
-                    }
-                } loadSourcesFromNavbar();
-
-            });
-
-
-        
         function setUser(userId) {
             console.log("called");
             console.log(userId);
@@ -94,13 +84,14 @@
         // takes json of news sources and return the categories
         function getCategories(sources)
         {
+
             var results = [];
             for (var s in sources.sources)
             {
                 //console.log(sources.sources[s].category);
                 results.push(sources.sources[s].category);
             }
-
+            console.log(results);
             return removeDuplicates(results);
         }
 
@@ -130,51 +121,6 @@
             }
             return true;
         }
-
-
-
-        /*console.log($routeParams);
-        var vm = this;
-        var userId = parseInt($routeParams.uid);
-        vm.userId = userId;
-        vm.updateProfile = updateProfile;
-        console.log(userId);
-
-        function init()
-        {
-            UserService.findUserById(userId)
-                .success(function(user) {
-                    if (user != '0') {
-                        vm.user = user;
-                        console.log(user);
-                    }
-                })
-                .error (function() {
-                    vm.alert = "Could not retrieve user";
-                });
-        }
-        init();
-
-        function updateProfile()
-        {
-            var promise = UserService.updateUser(userId, vm.user);
-            promise.success(function(user){
-                if(user === '0') {
-                    vm.alert = "Unable to update user";
-                } else {
-                    console.log("updated user : "+user);
-                    $location.url("/user/"+vm.userId);
-                }
-            });
-        }
-        /!*
-         function updateProfile()
-         {
-         UserService.updateUser(user);
-         $location.url("/user/"+vm.userId);
-         console.log(user);
-         //$location.url("/user/" + vm.userId + "/website");
-         }*!/*/
     };
 
 })();

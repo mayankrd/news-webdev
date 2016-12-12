@@ -27,9 +27,39 @@
                 controllerAs: "model"
             })
 
-            .when("/profile", {
-                templateUrl: "/views/user/dashboard/profile.view.client.html",
+            .when("/sources/:category", {
+                templateUrl: "/views/sources/newsSources.view.client.html",
                 controller: "NewsSourcesController",
+                controllerAs: "model"
+            })
+
+            .when("/profile/:uid", {
+                templateUrl: "/views/user/dashboard/profile.view.client.html",
+                controller: "DashboardController",
+                controllerAs: "model"
+            })
+
+            .when("/favorites/:uid", {
+                templateUrl: "/views/user/dashboard/favorites.view.client.html",
+                controller: "DashboardController",
+                controllerAs: "model"
+            })
+
+            .when("/comments/:uid", {
+                templateUrl: "/views/user/dashboard/comments.view.client.html",
+                controller: "DashboardController",
+                controllerAs: "model"
+            })
+
+            .when("/manageUsers/:uid", {
+                templateUrl: "/views/user/dashboard/manage-users.view.client.html",
+                controller: "DashboardController",
+                controllerAs: "model"
+            })
+
+            .when("/manageComments/:uid", {
+                templateUrl: "/views/user/dashboard/manage-comments.view.client.html",
+                controller: "DashboardController",
                 controllerAs: "model"
             })
 

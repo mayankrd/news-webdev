@@ -25,12 +25,12 @@
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 225px;
     width: 0;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #333333;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -126,4 +126,8 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+body {
+    padding-top: 73px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }

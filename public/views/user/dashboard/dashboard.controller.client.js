@@ -1,18 +1,19 @@
 /**
- * Created by mayank on 10/17/16.
+ * Created by mayank on 12/11/16.
  */
-
 (function() {
     angular
         .module("NewsApp")
-        .controller("NewsSourcesController", NewsSourcesController);
+        .controller("DashboardController", DashboardController);
 
-    function NewsSourcesController($routeParams, $location, NewsSourcesService)
+    function DashboardController($routeParams, $location, NewsSourcesService)
     {
-        console.log("inside news sources controller");
+        console.log("inside DashboardController controller");
         var vm = this;
 
         function init() {
+            vm.userId = $routeParams.uid;
+
             vm.getSources = getSources;
             vm.getNewsFeeds = getNewsFeeds;
             vm.setUser = setUser($routeParams.uid);
@@ -20,22 +21,22 @@
         init();
 
         var promise = NewsSourcesService.fetchAllSources();
-            promise.success(function (sources) {
-                vm.sources = sources;
-                vm.countries = getCountries(sources);
-                vm.categories = getCategories(sources);
+        promise.success(function (sources) {
+            vm.sources = sources;
+            vm.countries = getCountries(sources);
+            vm.categories = getCategories(sources);
 
-                function loadSourcesFromNavbar() {
-                    var category = $routeParams.category;
-                    if(typeof category !== "undefined"){
-                        getSources(category);
-                    }
-                } loadSourcesFromNavbar();
+            function loadSourcesFromNavbar() {
+                var category = $routeParams.category;
+                if(typeof category !== "undefined"){
+                    getSources(category);
+                }
+            } loadSourcesFromNavbar();
 
-            });
+        });
 
 
-        
+
         function setUser(userId) {
             console.log("called");
             console.log(userId);
@@ -134,40 +135,40 @@
 
 
         /*console.log($routeParams);
-        var vm = this;
-        var userId = parseInt($routeParams.uid);
-        vm.userId = userId;
-        vm.updateProfile = updateProfile;
-        console.log(userId);
+         var vm = this;
+         var userId = parseInt($routeParams.uid);
+         vm.userId = userId;
+         vm.updateProfile = updateProfile;
+         console.log(userId);
 
-        function init()
-        {
-            UserService.findUserById(userId)
-                .success(function(user) {
-                    if (user != '0') {
-                        vm.user = user;
-                        console.log(user);
-                    }
-                })
-                .error (function() {
-                    vm.alert = "Could not retrieve user";
-                });
-        }
-        init();
+         function init()
+         {
+         UserService.findUserById(userId)
+         .success(function(user) {
+         if (user != '0') {
+         vm.user = user;
+         console.log(user);
+         }
+         })
+         .error (function() {
+         vm.alert = "Could not retrieve user";
+         });
+         }
+         init();
 
-        function updateProfile()
-        {
-            var promise = UserService.updateUser(userId, vm.user);
-            promise.success(function(user){
-                if(user === '0') {
-                    vm.alert = "Unable to update user";
-                } else {
-                    console.log("updated user : "+user);
-                    $location.url("/user/"+vm.userId);
-                }
-            });
-        }
-        /!*
+         function updateProfile()
+         {
+         var promise = UserService.updateUser(userId, vm.user);
+         promise.success(function(user){
+         if(user === '0') {
+         vm.alert = "Unable to update user";
+         } else {
+         console.log("updated user : "+user);
+         $location.url("/user/"+vm.userId);
+         }
+         });
+         }
+         /!*
          function updateProfile()
          {
          UserService.updateUser(user);
