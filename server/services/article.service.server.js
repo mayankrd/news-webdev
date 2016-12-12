@@ -10,8 +10,22 @@ module.exports = function (app, model) {
     app.post('/api/article', createArticle);
     app.post('/api/findAllarticles', findAllArticles);
     app.get('/api/article/:aid', findArticleById);
+    app.get('/api/articleTitle/:title', findArticleByTitle);
     app.put('/api/article/:aid', updateArticleById);
     app.delete('/api/article/:aid', deleteArticleById);
+
+    function findArticleByTitle(req, res) {
+        var title = req.params.title;
+        ArticleModel.findArticleByTitle(title)
+            .then(
+                function(response){
+                        res.json(response);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+    }
 
     function deleteArticleById(req, res){
         var artId = req.params.aid;

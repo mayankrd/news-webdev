@@ -4,10 +4,12 @@
 
 var q = require('q');
 var mongoose = require('mongoose');
-
+var ArticleModel = mongoose.model('Article');
+//var ArticleModel = mongoose.model("Article", ArticleSchema);
 //load user schema
 var CommentSchema = require("./comment.schema.server.js")(mongoose);
 var CommentModel = mongoose.model("Comment", CommentSchema);
+
 
 module.exports = function(app, mongoose) {
     var api = {
@@ -25,20 +27,27 @@ module.exports = function(app, mongoose) {
         model = _model;
     }
 
-    function createComment(ipComment){
+    function createComment(articleId, comment){
         var deferred = q.defer();
-        var comment = {
-            "commentText": ipComment.commentText,
-            "createdByUser": ipComment.createdByUser
-        };
-        CommentModel.create(ipComment, function(err, doc){
+
+        ArticleModel.findById(articleId, function(err, doc){
             if(err){
                 deferred.reject(err);
             }
             else{
-                deferred.resolve(doc);
+                var newComment = new CommentModel(comment);
+                doc.comments.push(newComment);
+                doc.save(function(err, data){
+                    if(err){
+                        deferred.reject(err);
+                    }
+                    else{
+                        deferred.resolve(doc.comments);
+                    }
+                })
             }
         });
+
         return deferred.promise;
     }
 

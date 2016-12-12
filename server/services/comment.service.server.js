@@ -4,14 +4,31 @@
 module.exports = function (app, model) {
 
     var CommentModel = model.commentModel;
+    var ArticleModel = model.articleModel;
 
     console.log("inside comment server service");
 
-    app.post('/api/comment', createComment);
+    app.post('/api/comment/:aid', createComment);
     app.post('/api/findAllComment', findAllComment);
     app.get('/api/comment/:cid', findCommentById);
     app.put('/api/comment/:cid', updateCommentById);
     app.delete('/api/comment/:cid', deleteCommentById);
+
+
+    function createComment(req, res){
+        var articleId = req.params.aid;
+        var comment = req.body;
+        console.log(comment);
+        CommentModel.createComment(articleId, comment)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+    }
 
     function deleteCommentById(req, res){
         var commentId = req.params.cid;
@@ -72,21 +89,6 @@ module.exports = function (app, model) {
                 function(doc){
                     comments = doc;
                     res.json(comments);
-                },
-                function(err){
-                    res.status(400).send(err);
-                }
-            )
-    }
-
-    function createComment(req, res){
-        var comment = req.body;
-        console.log(comment);
-        CommentModel.createUser(comment)
-            .then(
-                function(doc){
-                    comment = doc;
-                    res.json(comment);
                 },
                 function(err){
                     res.status(400).send(err);

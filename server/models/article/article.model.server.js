@@ -16,6 +16,7 @@ module.exports = function(app, mongoose) {
         findArticleById: findArticleById,
         deleteArticleById: deleteArticleById,
         updateArticleById: updateArticleById,
+        findArticleByTitle: findArticleByTitle,
         setModel: setModel
         //setUserLoggedIn: setUserLoggedIn
     };
@@ -24,6 +25,21 @@ module.exports = function(app, mongoose) {
 
     function setModel(_model) {
         model = _model;
+    }
+
+    function findArticleByTitle(title) {
+        var deferred = q.defer();
+        console.log(title);
+        ArticleModel.findOne({ "article.title": title}, function(err, doc){
+            if(err){
+                deferred.reject(err);
+            }
+            else{
+                deferred.resolve(doc);
+            }
+        });
+        //PersonModel.find({ favouriteFoods: "sushi" }, ...);
+        return deferred.promise;
     }
 
     function createArticle(ipArticle){
