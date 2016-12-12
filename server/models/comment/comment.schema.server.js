@@ -4,9 +4,10 @@
 module.exports = function() {
 
     var mongoose = require("mongoose");
+    var UserSchema = require('../user/user.schema.server')(mongoose);
     var CommentSchema = mongoose.Schema({
             commentText: String,
-            createdByUser: String,
+            createdByUser: UserSchema,
         },
         {collection: 'article.comments'});
 

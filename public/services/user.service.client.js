@@ -49,12 +49,12 @@
             callback($http.delete(url));
         }
 
-        function updateUser(user, callback)
+        function updateUser(user)
         {
             console.log("user at service client");
             console.log(user);
-            var url  = '/api/admin/' + user["_id"];
-            callback($http.put(url, JSON.stringify(user)));
+            var url  = '/api/user/' + user["_id"];
+            return $http.put(url, JSON.stringify(user));
         }
     }
 })();

@@ -32,7 +32,8 @@
             console.log(article);
             var userId = $routeParams.uid;
             console.log(userId);
-            localStorage.setItem("articleClicked", JSON.stringify(article));
+            var articleClicked = {"article": article, "comments":[]};
+            localStorage.setItem("articleClicked", JSON.stringify(articleClicked));
             if(typeof userId !== "undefined"){
                 $location.url("/sources/user/"+ userId + "/" + cnt + "/" + cat + "/" + sid + "/article");
             }
