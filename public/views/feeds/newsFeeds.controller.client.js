@@ -34,7 +34,7 @@
             console.log(userId);
             localStorage.setItem("articleClicked", JSON.stringify(article));
             if(typeof userId !== "undefined"){
-                $location.url("/sources/"+ userId + "/" + cnt + "/" + cat + "/" + sid + "/article");
+                $location.url("/sources/user/"+ userId + "/" + cnt + "/" + cat + "/" + sid + "/article");
             }
             else
                 $location.url("/sources/"+ cnt + "/" + cat + "/" + sid + "/article");

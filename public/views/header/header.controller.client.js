@@ -7,7 +7,7 @@
         .module("NewsApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($routeParams, $location, NewsSourcesService)
+    function HeaderController($routeParams, $location, NewsSourcesService, UserService)
     {
         console.log("inside HeaderController");
         var vm = this;
@@ -22,9 +22,52 @@
         function init() {
             vm.getSources = getSources;
             vm.getNewsFeeds = getNewsFeeds;
+            vm.showNewsSources = showNewsSources;
             vm.setUser = setUser($routeParams.uid);
+
         }
         init();
+
+        function setCurrentUser() {
+            console.log($location.absUrl());
+            var uid = $routeParams.uid;
+            console.log("inisde setCurrentUser");
+            console.log(uid);
+            if(typeof uid !== "undefined") {
+                var promise = UserService.findUserById(userId);
+                promise.success(function (resposne) {
+                    vm.userId = resposne._id;
+                    vm.username = resposne.username;
+                })
+            }
+        }
+        setCurrentUser();
+
+        function findUserByCredentials(user) {
+            if(typeof user.username !== "undefined" && typeof user.password !== "undefined")
+            {
+                var promise = UserService.findUserByCredentials(user);
+                promise.success(function (response) {
+                    console.log(response);
+                    if(response === null) {
+                        vm.alert = true;
+                    }
+                    else{
+                        $location.url('/sources/user/' + response._id);
+                    }
+                })
+            }
+        }
+
+        function showNewsSources(category) {
+            var uid = $routeParams.uid;
+            if(typeof uid !== "undefined"){
+                $location.url('/sources/user/' +uid+ '/'+ category);
+            }
+            else
+                $location.url('/sources/' + category);
+
+        }
 
         function setUser(userId) {
             console.log("called");
@@ -47,7 +90,7 @@
             var sid = newsSource.id;
             var userId = $routeParams.uid;
             if(typeof userId !== "undefined"){
-                $location.url("/sources/"+ userId + "/" + cnt + "/" + cat + "/" + sid);
+                $location.url("/sources/user/"+ userId + "/" + cnt + "/" + cat + "/" + sid);
             }
             else
                 $location.url("/sources/"+ cnt + "/" + cat + "/" + sid);

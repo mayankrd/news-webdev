@@ -27,7 +27,7 @@
                         vm.alert = true;
                     }
                     else{
-                        $location.url('/profile/' + response._id);
+                        $location.url('/sources/user/' + response._id);
                     }
                 })
             }

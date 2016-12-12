@@ -10,20 +10,33 @@
     {
         console.log("inside news article controller");
         var vm = this;
-        //var article = $window.articleClicked;
-        var articleStored = JSON.parse(localStorage.getItem("articleClicked"));
         var userId = $routeParams.uid;
-        console.log("articleStored");
-        console.log(articleStored);
+
+        function setCurrentArticle() {
+            var articleStored = JSON.parse(localStorage.getItem("articleClicked"));
+            console.log("articleStored");
+            console.log(articleStored);
+            var promise = NewsArticleService.findArticleByTitle(articleStored.title);
+            promise.success(function (response) {
+                if(response !== null){
+                    vm.article = response;
+                }
+                else
+                    vm.article = articleStored;
+            })
+        }
+        setCurrentArticle();
 
         function init() {
-            vm.article = articleStored;
+
             vm.sourceId = $routeParams.sid;
             vm.gotoArticle = gotoArticle;
             vm.addArticleToFavorites = addArticleToFavorites;
             vm.addComment = addComment;
         }
         init();
+
+
 
         function addComment(commentIp) {
             commentIp.createdByUser = userId;
@@ -39,7 +52,7 @@
         }
         
         function addArticleToFavorites() {
-            var article = {"article": articleStored, "comments":[]};
+            var article = {"article": vm.article, "comments":[]};
             console.log("arti");
             console.log(article);
                 var promise = NewsArticleService.createArticle(article);

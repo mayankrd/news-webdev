@@ -57,7 +57,7 @@
             var sid = newsSource.id;
             var userId = $routeParams.uid;
             if(typeof userId !== "undefined"){
-                $location.url("/sources/"+ userId + "/" + cnt + "/" + cat + "/" + sid);
+                $location.url("/sources/user/"+ userId + "/" + cnt + "/" + cat + "/" + sid);
             }
             else
                 $location.url("/sources/"+ cnt + "/" + cat + "/" + sid);

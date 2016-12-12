@@ -30,7 +30,7 @@
 
                             </div>
 
-                            <a href="#sources/{{model.selectedCategory}}" type="button" class="btn btn-default btn-success">Go!</a>
+                            <a ng-click="model.showNewsSources(model.selectedCategory)" type="button" class="btn btn-default btn-success">Go!</a>
 
                         </div>
                        <!-- <button type="submit" class="btn btn-default">Submit</button>-->
@@ -50,10 +50,27 @@
                 <a href="#register" type="button" class="btn btn-default btn-sm">
                     Register
                 </a>
+               <!-- <a ng-show="{{model.userId}}" href="#/profile/{{model.uid}}" type="button" class="btn btn-default btn-sm">
+                    Hi {{model.username}} !
+                </a>-->
 
                 <a href="#login" type="button" class="btn btn-default btn-sm">
                     Login
                 </a>
+
+               <!-- <a ng-show="{{model.uid}}" href="#sources" type="button" class="btn btn-default btn-sm">
+                    Logout
+                </a>
+-->
+               <!-- <a href="#register" type="button" class="btn btn-default btn-sm">
+                    <div ng-hide="{{model.userId}}"> Register </div>
+                    <div ng-show="{{model.userId}}"> Profile </div>
+                </a>
+
+                <a ng-hide="{{model.uid}}" href="#login" type="button" class="btn btn-default btn-sm">
+                    Login
+                </a>-->
+
 
             </form>
 

@@ -12,11 +12,11 @@
 
             // method declarations
             createUser : createUser,
-            findUserByCredentials : findUserByCredentials
-            /*findAllUsers: findAllUsers,
+            findUserByCredentials : findUserByCredentials,
+            findAllUsers: findAllUsers,
             findUserById: findUserById,
             updateUser : updateUser,
-            deleteUser : deleteUser,*/
+            deleteUser : deleteUser
         };
 
         return api;
@@ -37,10 +37,10 @@
             callback($http.get(url));
         }
 
-        function findUserById(uid, callback)
+        function findUserById(uid)
         {
-            var url = '/api/admin/' + uid;
-            callback($http.get(url));
+            var url = '/api/user/' + uid;
+            return $http.get(url);
         }
 
         function deleteUser(user, callback)
