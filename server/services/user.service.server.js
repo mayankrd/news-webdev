@@ -9,45 +9,10 @@ module.exports = function (app, model) {
 
     app.post('/api/user', createUser);
     app.post('/api/getUserByCredentials', getUserByCredentials);
-
-   /* app.get('/api/admin', findAllUsers);
-    app.get('/api/admin/:uid', findUserById);
-    app.put('/api/admin/:uid', updateUser);
-    app.delete('/api/admin/:uid', deleteUser);
-    app.getUserByCredentials = getUserByCredentials;*/
-
-    function login(req, res){
-        var user = req.user;
-        //UserModel.setUserLoggedIn(user._id);
-        res.json(user);
-    }
-
-    function logout(req, res){
-        req.logout();
-        res.send(200);
-    }
-
-    function loggedIn(req, res){
-        res.send(req.isAuthenticated()? req.user: '0');
-    }
-
-    function getUserByCredentials(req, res){
-        var user = req.body;
-        var credentials = {
-            "username": user.username,
-            "password": user.password
-        };
-        UserModel.findUserByCredentials(credentials)
-            .then(
-                function(doc){
-                    user = doc;
-                    res.json(user);
-                },
-                function(err){
-                    res.status(400).send(err);
-                }
-            )
-    }
+    app.post('/api/findAllUsers', findAllUsers);
+    app.get('/api/user/:uid', findUserById);
+    app.put('/api/user/:uid', updateUser);
+    app.delete('/api/user/:uid', deleteUser);
 
     function deleteUser(req, res){
         var userId = req.params.uid;
@@ -115,6 +80,24 @@ module.exports = function (app, model) {
             )
     }
 
+    function getUserByCredentials(req, res){
+        var user = req.body;
+        var credentials = {
+            "username": user.username,
+            "password": user.password
+        };
+        UserModel.findUserByCredentials(credentials)
+            .then(
+                function(doc){
+                    user = doc;
+                    res.json(user);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+    }
+
     function createUser(req, res){
         var user = req.body;
         console.log(user);
@@ -130,24 +113,19 @@ module.exports = function (app, model) {
             )
     }
 
-    function findParticipantByEmailSer(req, res)
-    {
-        console.log("inside server service findParticipantByEmailSer");
-        var emailId = req.params.emailId;
-        emailId = emailId.substring(1);
-        console.log(emailId);
 
-        for (var p in participants)
-        {
-            console.log(participants[p].emailId);
-            if (participants[p].emailId === emailId.toString())
-            {
-                res.send(participants[p]._id);
-                return;
-            }
-        }
-
-        res.send('0');
+    function login(req, res){
+        var user = req.user;
+        //UserModel.setUserLoggedIn(user._id);
+        res.json(user);
     }
 
+    function logout(req, res){
+        req.logout();
+        res.send(200);
+    }
+
+    function loggedIn(req, res){
+        res.send(req.isAuthenticated()? req.user: '0');
+    }
 };
