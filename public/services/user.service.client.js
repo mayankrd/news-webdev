@@ -31,10 +31,10 @@
             return $http.post('api/getUserByCredentials', user);
         }
 
-        function findAllUsers(callback)
+        function findAllUsers()
         {
-            var url = '/api/admin';
-            callback($http.get(url));
+            var url = '/api/findAllUsers';
+            return $http.post(url);
         }
 
         function findUserById(uid)
@@ -43,10 +43,10 @@
             return $http.get(url);
         }
 
-        function deleteUser(user, callback)
+        function deleteUser(user)
         {
-            var url = '/api/admin/' + user._id;
-            callback($http.delete(url));
+            var url = '/api/user/' + user._id;
+            return $http.delete(url);
         }
 
         function updateUser(user)

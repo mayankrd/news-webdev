@@ -27,7 +27,7 @@
                 <a href="#manageUsers/{{model.userId}}"><span class="glyphicon glyphicon-cog"></span> Manage Users</a>
             </li>
             <li>
-                <a href="#manageComments/{{model.userId}}"><span class="glyphicon glyphicon-cog"></span> Manage Comments</a>
+                <a href="#addAdmin/{{model.userId}}"><span class="glyphicon glyphicon-cog"></span> Add Admin</a>
             </li>
             <!--<li>
                 <a href="#">Services</a>
@@ -45,34 +45,35 @@
             <div class="row">
                 <div class="col-lg-12">
 
-
-
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
+                            <br/>
                             <tr>
-                                <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Username</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Anna</td>
-                                <td>Pitt</td>
-                                <td>New York</td>
-                                <td><a href="#">
+                            <tr ng-repeat="user in model.users">
+                                <td>{{user.name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.role}}</td>
+                                <td><button ng-click="model.deleteUser(user)">
                                     <span class="glyphicon glyphicon-trash"></span>
-                                </a></td>
+                                </button></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
 
-
+                    <div ng-show="model.deleteUserAlert" class="alert alert-danger small">
+                         User Deleted !
+                    </div>
                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                 </div>
             </div>

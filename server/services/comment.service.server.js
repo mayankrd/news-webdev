@@ -9,7 +9,7 @@ module.exports = function (app, model) {
     console.log("inside comment server service");
 
     app.post('/api/comment/:aid', createComment);
-    app.post('/api/findAllComment', findAllComment);
+    app.get('/api/findAllComment', findAllComment);
     app.get('/api/comment/:cid', findCommentById);
     app.put('/api/comment/:cid', updateCommentById);
     app.delete('/api/comment/:cid', deleteCommentById);
@@ -87,8 +87,8 @@ module.exports = function (app, model) {
         CommentModel.findAllComment()
             .then(
                 function(doc){
-                    comments = doc;
-                    res.json(comments);
+                    //comments = doc;
+                    res.json(doc);
                 },
                 function(err){
                     res.status(400).send(err);

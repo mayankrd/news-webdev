@@ -10,10 +10,16 @@
 
         var api = {
 
-            createComment: createComment
+            createComment: createComment,
+            findAllComment: findAllComment
         };
 
         return api;
+
+        function findAllComment() {
+            var url = '/api/findAllComment';
+            return $http.post(url);
+        }
 
         function createComment(articleId, comment)
         {

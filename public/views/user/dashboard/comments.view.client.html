@@ -23,11 +23,11 @@
             <li>
                 <a href="#comments/{{model.userId}}"><span class="glyphicon glyphicon-comment"></span> My Comments</a>
             </li>
-            <li>
+            <li ng-show="model.adminUserFlag">
                 <a href="#manageUsers/{{model.userId}}"><span class="glyphicon glyphicon-cog"></span> Manage Users</a>
             </li>
-            <li>
-                <a href="#manageComments/{{model.userId}}"><span class="glyphicon glyphicon-cog"></span> Manage Comments</a>
+            <li ng-show="model.adminUserFlag">
+                <a href="#addAdmin/{{model.userId}}"><span class="glyphicon glyphicon-cog"></span> Add Admin</a>
             </li>
             <!--<li>
                 <a href="#">Services</a>

@@ -23,10 +23,22 @@
             vm.getSources = getSources;
             vm.getNewsFeeds = getNewsFeeds;
             vm.showNewsSources = showNewsSources;
+            vm.gotoHome = gotoHome;
             vm.setUser = setUser($routeParams.uid);
 
         }
         init();
+        
+        function gotoHome() {
+            console.log("goto home");
+            var userId = $routeParams.uid;
+            if(typeof userId !== "undefined"){
+                $location.url("/sources/user/" + userId);
+            }
+            else{
+                $location.url("/sources");
+            }
+        }
 
         function setCurrentUser() {
             console.log($location.absUrl());

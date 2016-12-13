@@ -59,9 +59,9 @@
                 controllerAs: "model"
             })
 
-            .when("/manageComments/:uid", {
-                templateUrl: "/views/user/dashboard/manage-comments.view.client.html",
-                controller: "ManageCommentsController",
+            .when("/addAdmin/:uid", {
+                templateUrl: "/views/user/dashboard/add-admin.view.client.html",
+                controller: "AddAdminController",
                 controllerAs: "model"
             })
 

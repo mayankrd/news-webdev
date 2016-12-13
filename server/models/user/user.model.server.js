@@ -33,7 +33,8 @@ module.exports = function(app, mongoose) {
             "username": ipUser.username,
             "password": ipUser.password,
             "name": ipUser.name,
-            "email": ipUser.email
+            "email": ipUser.email,
+            "role": ipUser.role
         };
         UserModel.create(ipUser, function(err, doc){
             if(err){

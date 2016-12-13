@@ -34,8 +34,6 @@
 
             });
 
-
-        
         function setUser(userId) {
             console.log("called");
             console.log(userId);
