@@ -7,10 +7,12 @@
         .module("NewsApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($routeParams, $location, NewsSourcesService, UserService)
+    function HeaderController($routeParams, $location, NewsSourcesService, UserService, NewsSearchService)
     {
         console.log("inside HeaderController");
         var vm = this;
+
+        NewsSearchService.searchNewsByQuery("India");
 
         var promise = NewsSourcesService.fetchAllSources();
         promise.success(function (sources) {
