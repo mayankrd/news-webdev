@@ -41,8 +41,9 @@
         }
 
         function searchNews(query) {
-            console.log(query);
-            var promise = NewsSearchService.searchNewsByQuery(query);
+           NewsSearchService.searchNewsByQuery(query).then(function (res) {
+                console.log(res)
+            });
             console.log(promise);
         }
         

@@ -8,5 +8,5 @@ module.exports = function(app, mongoose) {
     require("./services/user.service.server.js")(app, model);
     require("./services/article.service.server")(app, model);
     require("./services/comment.service.server")(app, model);
-
+    require("./services/search.service.server")(app, model);
 };

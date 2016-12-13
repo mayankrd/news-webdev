@@ -7,7 +7,7 @@
         .module("NewsApp")
         .factory("NewsSearchService", NewsSearchService)
 
-    function NewsSearchService($http) {
+    function NewsSearchService($http,$q) {
         console.log("NewsSearchService");
         var api = {
 
@@ -17,7 +17,7 @@
         return api;
 
         function searchNewsByQuery(query) {
-
+            var deferred = $q.defer();
             var req = {
                 method: 'GET',
                 url: 'https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=' + query + '&mkt=en-us',
@@ -27,21 +27,20 @@
             }
 
             $http(req)
-                .then(
-                    function(doc){
-                        console.log(doc);
-                        //todo
-                    },
-                    function(err){
-                        res.status(400).send(err);
-                    }
-                )
-               /* .then(function(resposne){
-                    return resposne.data;
+                .then(function(resposne){
+
+                    deferred.resolve(resposne);
+
+                   console.log(resposne);
+                 //   return resposne;
                 }, function(response1) {
                     console.log("resposne1");
-                    return resposne1;
-                });*/
+                    deferred.reject(response1);
+                   // return resposne1;
+                });
+
+            console.log(deferred.promise)
+            return deferred.promise;
         }
     }
 })();
