@@ -97,7 +97,7 @@ module.exports = function(app, mongoose) {
             password: user.password,
             name: user.name,
             email: user.email,
-            favorites: user.articles,
+            favorites: user.favorites,
             comments: user.comments
         }, function(err, doc){
             if(err){

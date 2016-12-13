@@ -77,17 +77,61 @@
                                     })
                                 })
                             }
-
                         })
                 });
             }
             else{
-                vm.loginAlert = true;
+                vm.loginCommentAlert = true;
             }
         }
         
         function addArticleToFavorites() {
-            var article = {"article": vm.article, "comments":[]};
+            if (typeof userId !== "undefined") {
+                console.log(userId);
+                var promise = UserService.findUserById(userId);
+                promise.success(function (user) {
+                    console.log(user);
+                    var currentUser = user;
+                    //check if it's an existing article in DB
+                    var promise = NewsArticleService.findArticleByTitle(vm.article.title);
+                    promise.success(function (response) {
+                        // if it's an existing article then add the existing articleId to the current user's favorites list
+                        if (response !== null) {
+                            //update user with articleId added to favorites list
+                            console.log(currentUser);
+                            currentUser.favorites.push(response._id);
+                            var promise = UserService.updateUser(currentUser);
+                            promise.success(function (updatedUser) {
+                                console.log("updatedUser");
+                                console.log(updatedUser);
+                            })
+                        }
+                        // if it's not an existing article then create a new article and add its articleId to user's favorites
+                        else {
+                            var article = {"article": vm.article, "comments": []};
+                            var promise = NewsArticleService.createArticle(article);
+                            promise.success(function (response) {
+                                console.log(response);
+                                //update user with articleId added to favorites list
+                                console.log(currentUser);
+                                currentUser.favorites.push(response._id);
+                                var promise = UserService.updateUser(currentUser);
+                                promise.success(function (updatedUser) {
+                                    console.log("updatedUser");
+                                    console.log(updatedUser);
+                                })
+                            })
+                        }
+                    });
+                });
+            }
+            else{
+                vm.loginFavoritesAlert = true;
+            }
+        }
+
+
+/*            var article = {"article": vm.article, "comments":[]};
 
             if(vm.existingArticleFlag === true){
                 //add article id to user's favorites list
@@ -116,15 +160,7 @@
                     //add article id to user's favorites list
                 })
             }
-        }
-
-        function findUserById() {
-
-        }
-
-        function addArticleToUsersFavList(articleId) {
-
-        }
+        }*/
 
         function gotoArticle(articleUrl) {
             $window.open(articleUrl);
