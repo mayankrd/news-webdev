@@ -10,7 +10,7 @@
                 <form class="form-signin">
                     <input ng-model="user.username" type="text" class="form-control" placeholder="Username" required autofocus>
                     <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required>
-                    <div ng-show="model.alert" class="alert alert-danger">
+                    <div ng-show="model.alert" class="alert alert-danger small">
                         Invalid username or password !
                     </div>
                     <button ng-click="model.findUserByCredentials(user)" class="btn btn-lg btn-primary btn-block" type="submit">

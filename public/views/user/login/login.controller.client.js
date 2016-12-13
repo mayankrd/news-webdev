@@ -6,7 +6,7 @@
         .module("NewsApp")
         .controller("LoginUserController", LoginUserController);
 
-    function LoginUserController($location, UserService)
+    function LoginUserController($location, UserService, $window)
     {
         console.log("inside login user controller");
         var vm = this;
@@ -27,12 +27,13 @@
                         vm.alert = true;
                     }
                     else{
+                        localStorage.setItem("loggedInUser", JSON.stringify(response));
+                        $window.location.reload();
                         $location.url('/sources/user/' + response._id);
                     }
                 })
             }
         }
-
     };
 
 })();

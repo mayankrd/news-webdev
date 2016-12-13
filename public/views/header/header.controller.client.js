@@ -7,12 +7,11 @@
         .module("NewsApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($routeParams, $location, NewsSourcesService, UserService, NewsSearchService)
+    function HeaderController($routeParams, $location, NewsSourcesService, UserService, NewsSearchService, $window)
     {
         console.log("inside HeaderController");
         var vm = this;
-
-        NewsSearchService.searchNewsByQuery("India");
+        var userId = $routeParams.uid;
 
         var promise = NewsSourcesService.fetchAllSources();
         promise.success(function (sources) {
@@ -26,10 +25,26 @@
             vm.getNewsFeeds = getNewsFeeds;
             vm.showNewsSources = showNewsSources;
             vm.gotoHome = gotoHome;
-            vm.setUser = setUser($routeParams.uid);
-
+            //vm.setUser = setUser($routeParams.uid);
+            vm.searchNews = searchNews;
+            vm.logoutUser = logoutUser;
         }
         init();
+        
+        function logoutUser() {
+            localStorage.removeItem("loggedInUser");
+            console.log("loggedOut user");
+            console.log(JSON.parse(localStorage.getItem("loggedInUser")));
+            vm.loggedInUserAlert = false;
+            $window.location.reload();
+            $location.url("/sources");
+        }
+
+        function searchNews(query) {
+            console.log(query);
+            var promise = NewsSearchService.searchNewsByQuery(query);
+            console.log(promise);
+        }
         
         function gotoHome() {
             console.log("goto home");
@@ -44,34 +59,22 @@
 
         function setCurrentUser() {
             console.log($location.absUrl());
-            var uid = $routeParams.uid;
+            //todo routeparam not having userId
+            console.log($routeParams.uid);
             console.log("inisde setCurrentUser");
-            console.log(uid);
-            if(typeof uid !== "undefined") {
-                var promise = UserService.findUserById(userId);
-                promise.success(function (resposne) {
-                    vm.userId = resposne._id;
-                    vm.username = resposne.username;
-                })
+
+            var loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+            console.log("loggedIn user");
+            console.log(loggedInUser);
+
+            if(loggedInUser !== null) {
+                vm.loggedInUserAlert = true;
+                    vm.userId = loggedInUser._id;
+                    vm.username = loggedInUser.username;
             }
         }
         setCurrentUser();
 
-        function findUserByCredentials(user) {
-            if(typeof user.username !== "undefined" && typeof user.password !== "undefined")
-            {
-                var promise = UserService.findUserByCredentials(user);
-                promise.success(function (response) {
-                    console.log(response);
-                    if(response === null) {
-                        vm.alert = true;
-                    }
-                    else{
-                        $location.url('/sources/user/' + response._id);
-                    }
-                })
-            }
-        }
 
         function showNewsSources(category) {
             var uid = $routeParams.uid;

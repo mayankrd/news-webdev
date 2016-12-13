@@ -7,7 +7,7 @@
         .module("NewsApp")
         .controller("NewsSourcesController", NewsSourcesController);
 
-    function NewsSourcesController($routeParams, $location, NewsSourcesService)
+    function NewsSourcesController($routeParams, $location, NewsSourcesService, $window)
     {
         console.log("inside news sources controller");
         var vm = this;

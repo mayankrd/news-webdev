@@ -41,36 +41,25 @@
 
             <form class="navbar-form navbar-right" role="search">
 
-                <input class="input-lg" type="text" id="exampleInputEmail1" placeholder="Search">
+                <input ng-model="model.query" class="input-lg" type="text" id="exampleInputEmail1" placeholder="Search">
 
-                <button class="btn btn-default btn-info -align-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button ng-click="model.searchNews(model.query)" class="btn btn-default btn-info -align-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 
 
-
-                <a href="#register" type="button" class="btn btn-default btn-sm">
+                <a ng-hide="{{model.loggedInUserAlert}}" href="#register" type="button" class="btn btn-default btn-sm">
                     Register
                 </a>
-               <!-- <a ng-show="{{model.userId}}" href="#/profile/{{model.uid}}" type="button" class="btn btn-default btn-sm">
+                <a ng-show="{{model.loggedInUserAlert}}" href="#/profile/{{model.userId}}" type="button" class="btn btn-default btn-sm">
                     Hi {{model.username}} !
-                </a>-->
+                </a>
 
-                <a href="#login" type="button" class="btn btn-default btn-sm">
+                <a ng-hide="{{model.loggedInUserAlert}}" href="#login" type="button" class="btn btn-default btn-sm">
                     Login
                 </a>
 
-               <!-- <a ng-show="{{model.uid}}" href="#sources" type="button" class="btn btn-default btn-sm">
+                <a ng-show="{{model.loggedInUserAlert}}" ng-click="model.logoutUser()" type="button" class="btn btn-default btn-sm">
                     Logout
                 </a>
--->
-               <!-- <a href="#register" type="button" class="btn btn-default btn-sm">
-                    <div ng-hide="{{model.userId}}"> Register </div>
-                    <div ng-show="{{model.userId}}"> Profile </div>
-                </a>
-
-                <a ng-hide="{{model.uid}}" href="#login" type="button" class="btn btn-default btn-sm">
-                    Login
-                </a>-->
-
 
             </form>
 

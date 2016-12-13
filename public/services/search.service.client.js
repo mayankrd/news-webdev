@@ -27,14 +27,21 @@
             }
 
             $http(req)
-                .then(function(resposne){
-                    console.log("resposne");
-                    console.log(resposne);
+                .then(
+                    function(doc){
+                        console.log(doc);
+                        //todo
+                    },
+                    function(err){
+                        res.status(400).send(err);
+                    }
+                )
+               /* .then(function(resposne){
+                    return resposne.data;
                 }, function(response1) {
                     console.log("resposne1");
-                    console.log(response1)
-                });
+                    return resposne1;
+                });*/
         }
-        searchNewsByQuery();
     }
 })();
