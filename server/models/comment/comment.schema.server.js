@@ -8,6 +8,7 @@ module.exports = function() {
     var CommentSchema = mongoose.Schema({
             commentText: String,
             createdByUser: UserSchema,
+            date: Date
         },
         {collection: 'article.comments'});
 

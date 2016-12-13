@@ -45,45 +45,45 @@
 
         function addComment(commentIp) {
 
-            var promise = UserService.findUserById(userId);
-            promise.success(function (user) {
+            if (typeof userId !== "undefined") {
+                var promise = UserService.findUserById(userId);
+                promise.success(function (user) {
 
-                if(user !== null) {
-                    commentIp.createdByUser = user;
+                        commentIp.createdByUser = user;
+                        commentIp.date = Date.now();
 
-                    //check if it's an existing article in DB
-                    var promise = NewsArticleService.findArticleByTitle(vm.article.title);
-                    promise.success(function (response) {
-                        // add comment to the same article if its an existing article in DB
-                        if (response !== null) {
-                            var promise = ArticleCommentService.createComment(response._id, commentIp);
-                            promise.success(function (response) {
-                                console.log(response);
-                                setCurrentArticle();
-                            })
-                        }
-                        //add this article to DB and the comment to the newly created article
-                        else {
-                            var article = {"article": vm.article, "comments": []};
-                            var promise = NewsArticleService.createArticle(article);
-                            promise.success(function (response) {
-                                console.log(response);
-                                // adding comment to the newly created article in DB
+                        //check if it's an existing article in DB
+                        var promise = NewsArticleService.findArticleByTitle(vm.article.title);
+                        promise.success(function (response) {
+                            // add comment to the same article if its an existing article in DB
+                            if (response !== null) {
                                 var promise = ArticleCommentService.createComment(response._id, commentIp);
                                 promise.success(function (response) {
                                     console.log(response);
                                     setCurrentArticle();
                                 })
-                            })
-                        }
+                            }
+                            //add this article to DB and the comment to the newly created article
+                            else {
+                                var article = {"article": vm.article, "comments": []};
+                                var promise = NewsArticleService.createArticle(article);
+                                promise.success(function (response) {
+                                    console.log(response);
+                                    // adding comment to the newly created article in DB
+                                    var promise = ArticleCommentService.createComment(response._id, commentIp);
+                                    promise.success(function (response) {
+                                        console.log(response);
+                                        setCurrentArticle();
+                                    })
+                                })
+                            }
 
-                    })
-                }
-                else{
-                    vm.loginAlert = true;
-                }
-
-            });
+                        })
+                });
+            }
+            else{
+                vm.loginAlert = true;
+            }
         }
         
         function addArticleToFavorites() {

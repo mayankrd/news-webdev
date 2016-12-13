@@ -77,8 +77,15 @@
                     <div class="form-group">
                         <textarea ng-model="comment.commentText" class="form-control" rows="3"></textarea>
                     </div>
+
                     <button ng-click="model.addComment(comment)" type="submit" class="btn btn-primary">Submit</button>
+
                 </form>
+
+                <div ng-show="model.loginAlert" class="alert alert-warning small">
+                    Please login to enter a comment!
+                </div>
+
             </div>
 
             <hr>
@@ -92,7 +99,7 @@
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{comment.createdByUser.name}}
-                        <small>August 25, 2014 at 9:30 PM</small>
+                        <small>{{comment.date | date : "medium"}} </small>
                     </h4>
                     {{comment.commentText}}
                 </div>
