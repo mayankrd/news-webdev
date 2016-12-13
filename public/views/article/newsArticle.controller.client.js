@@ -97,14 +97,34 @@
                     promise.success(function (response) {
                         // if it's an existing article then add the existing articleId to the current user's favorites list
                         if (response !== null) {
+                            //remove article from user's favorites if it already exists in favorites
+                            var index = checkIfArticleInFavs(currentUser, response);
+                            if(index > -1){
+                                //console.log(currentUser.favorites.splice(index, 1));
+                                console.log(index);
+                                console.log(currentUser);
+                                var currFavs = currentUser.favorites;
+                                currFavs.splice(0, 1);
+                                console.log(currFavs);
+                                //todo
+                                /*var promise = UserService.updateUser(currentUser);
+                                promise.success(function (updatedUser) {
+                                    console.log("updatedUser");
+                                    console.log(updatedUser);
+                                    vm.articleRemovedAlert = true;
+                                })*/
+                            }
                             //update user with articleId added to favorites list
-                            console.log(currentUser);
-                            currentUser.favorites.push(response._id);
-                            var promise = UserService.updateUser(currentUser);
-                            promise.success(function (updatedUser) {
-                                console.log("updatedUser");
-                                console.log(updatedUser);
-                            })
+                            else{
+                                console.log(currentUser);
+                                currentUser.favorites.push(response._id);
+                                var promise = UserService.updateUser(currentUser);
+                                promise.success(function (updatedUser) {
+                                    console.log("updatedUser");
+                                    console.log(updatedUser);
+                                    vm.articleAddedAlert = true;
+                                })
+                            }
                         }
                         // if it's not an existing article then create a new article and add its articleId to user's favorites
                         else {
@@ -119,6 +139,7 @@
                                 promise.success(function (updatedUser) {
                                     console.log("updatedUser");
                                     console.log(updatedUser);
+                                    vm.articleAddedAlert = true;
                                 })
                             })
                         }
@@ -127,6 +148,25 @@
             }
             else{
                 vm.loginFavoritesAlert = true;
+            }
+        }
+        
+        function checkIfArticleInFavs(user, article) {
+            for (i = 0; i < user.favorites.length; i++) {
+                var str1 = user.favorites[i].toString();
+                var str2 = article._id.toString();
+                console.log(str1);
+                console.log(str2);
+                if(str1 === str2){
+                    console.log("matched strs");
+                    console.log(str1);
+                    console.log(str2);
+                    console.log(i);
+                    return i;
+                }
+                else{
+                    return -1;
+                }
             }
         }
 

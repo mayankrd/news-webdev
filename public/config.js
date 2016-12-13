@@ -37,31 +37,31 @@
 
             .when("/profile/:uid", {
                 templateUrl: "/views/user/dashboard/profile.view.client.html",
-                controller: "DashboardController",
+                controller: "ProfileController",
                 controllerAs: "model"
             })
 
             .when("/favorites/:uid", {
                 templateUrl: "/views/user/dashboard/favorites.view.client.html",
-                controller: "DashboardController",
+                controller: "FavoritesController",
                 controllerAs: "model"
             })
 
             .when("/comments/:uid", {
                 templateUrl: "/views/user/dashboard/comments.view.client.html",
-                controller: "DashboardController",
+                controller: "CommentsController",
                 controllerAs: "model"
             })
 
             .when("/manageUsers/:uid", {
                 templateUrl: "/views/user/dashboard/manage-users.view.client.html",
-                controller: "DashboardController",
+                controller: "ManageUsersController",
                 controllerAs: "model"
             })
 
             .when("/manageComments/:uid", {
                 templateUrl: "/views/user/dashboard/manage-comments.view.client.html",
-                controller: "DashboardController",
+                controller: "ManageCommentsController",
                 controllerAs: "model"
             })
 
