@@ -11,8 +11,6 @@ module.exports = function (app, model) {
     function searchNews(req, res, $http){
 
         var query = req.params.query;
-
-
         $http(req)
             .then(
                 function(doc){

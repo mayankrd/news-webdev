@@ -104,6 +104,8 @@
                                 console.log(index);
                                 console.log(currentUser);
                                 var currFavs = currentUser.favorites;
+                                console.log("before");
+                                console.log(currFavs);
                                 currFavs.splice(0, 1);
                                 console.log(currFavs);
                                 //todo

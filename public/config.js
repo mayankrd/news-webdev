@@ -11,6 +11,12 @@
 
             // routing for logged in user
 
+            .when("/user/:uid/search/:q", {
+                templateUrl: "/views/search/search.view.client.html",
+                controller: "NewsSearchController",
+                controllerAs: "model"
+            })
+
             .when("/sources/user/:uid", {
                 templateUrl: "/views/sources/newsSources.view.client.html",
                 controller: "NewsSourcesController",
@@ -82,6 +88,12 @@
             .when("/register", {
                 templateUrl: "/views/user/register/register.view.client.html",
                 controller: "RegisterUserController",
+                controllerAs: "model"
+            })
+
+            .when("/search/:q", {
+                templateUrl: "/views/search/search.view.client.html",
+                controller: "NewsSearchController",
                 controllerAs: "model"
             })
 

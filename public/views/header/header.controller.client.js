@@ -41,10 +41,18 @@
         }
 
         function searchNews(query) {
-           NewsSearchService.searchNewsByQuery(query).then(function (res) {
+           /*NewsSearchService.searchNewsByQuery(query).then(function (res) {
                 console.log(res)
             });
-            console.log(promise);
+            console.log(promise);*/
+
+            var uid = $routeParams.uid;
+            if(typeof uid !== "undefined"){
+                $location.url('/user/' +uid+ '/search/'+ query);
+            }
+            else
+                $location.url('/search/' + query);
+
         }
         
         function gotoHome() {
