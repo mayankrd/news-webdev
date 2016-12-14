@@ -11,10 +11,16 @@
         var api = {
 
             createArticle: createArticle,
-            findArticleByTitle: findArticleByTitle
+            findArticleByTitle: findArticleByTitle,
+            findArticleById: findArticleById
         };
 
         return api;
+
+        function findArticleById(artId) {
+            var url = '/api/article/' + artId;
+            return $http.get(url);
+        }
 
         function findArticleByTitle(title) {
             var url = '/api/articleTitle/' + title;

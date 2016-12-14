@@ -62,6 +62,8 @@
                                     console.log(response);
                                     setCurrentArticle();
                                 })
+
+                                //update user with
                             }
                             //add this article to DB and the comment to the newly created article
                             else {
