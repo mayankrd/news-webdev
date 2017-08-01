@@ -1,32 +1,30 @@
 /**
  * Created by mayank on 12/9/16.
+ * Controller to display details of an article
+ * A logged in user can comment and set an article as his/her favorite
  */
 (function() {
     angular
         .module("NewsApp")
         .controller("NewsArticleController", NewsArticleController);
 
-    function NewsArticleController($routeParams, $location, NewsArticleService, $window, ArticleCommentService, UserService)
+    // Controller to display details of an article
+    // A logged in user can comment and set an article as his/her favorite
+    function NewsArticleController($routeParams, NewsArticleService, $window, ArticleCommentService, UserService)
     {
-        console.log("inside news article controller");
         var vm = this;
         var userId = $routeParams.uid;
 
+        // function to set current article by finding it using its id
         function setCurrentArticle() {
             var articleStored = JSON.parse(localStorage.getItem("articleClicked"));
-            console.log("articleStored");
-            console.log(articleStored);
-            console.log(articleStored.article.title);
             var promise = NewsArticleService.findArticleByTitle(articleStored.article.title);
-            console.log(promise);
             promise.success(function (response) {
                 if(response !== null){
                     console.log("existing article");
                     vm.article = response.article;
                     vm.comments = response.comments;
                     vm.existingArticleFlag = true;
-                    console.log(vm.article);
-                    console.log(vm.comments);
                 }
                 else
                     vm.article = articleStored.article;
@@ -34,8 +32,8 @@
         }
         setCurrentArticle();
 
+        // on page load initializations
         function init() {
-
             vm.sourceId = $routeParams.sid;
             vm.gotoArticle = gotoArticle;
             vm.addArticleToFavorites = addArticleToFavorites;
@@ -43,6 +41,7 @@
         }
         init();
 
+        // function to write comments specific to the logged in user using article comment service
         function addComment(commentIp) {
 
             if (typeof userId !== "undefined") {
@@ -86,13 +85,12 @@
                 vm.loginCommentAlert = true;
             }
         }
-        
+
+        // function to add article to user's favorites
         function addArticleToFavorites() {
             if (typeof userId !== "undefined") {
-                console.log(userId);
                 var promise = UserService.findUserById(userId);
                 promise.success(function (user) {
-                    console.log(user);
                     var currentUser = user;
                     //check if it's an existing article in DB
                     var promise = NewsArticleService.findArticleByTitle(vm.article.title);
@@ -102,14 +100,8 @@
                             //remove article from user's favorites if it already exists in favorites
                             var index = checkIfArticleInFavs(currentUser, response);
                             if(index > -1){
-                                //console.log(currentUser.favorites.splice(index, 1));
-                                console.log(index);
-                                console.log(currentUser);
                                 var currFavs = currentUser.favorites;
-                                console.log("before");
-                                console.log(currFavs);
                                 currFavs.splice(0, 1);
-                                console.log(currFavs);
                                 //todo
                                 /*var promise = UserService.updateUser(currentUser);
                                 promise.success(function (updatedUser) {
@@ -154,7 +146,9 @@
                 vm.loginFavoritesAlert = true;
             }
         }
-        
+
+        // function to check if the article already exists in user's favorites
+        // function also sets the favorites flag accordingly
         function checkIfArticleInFavs(user, article) {
             for (i = 0; i < user.favorites.length; i++) {
                 var str1 = user.favorites[i].toString();
@@ -174,38 +168,7 @@
             }
         }
 
-
-/*            var article = {"article": vm.article, "comments":[]};
-
-            if(vm.existingArticleFlag === true){
-                //add article id to user's favorites list
-
-                var currentUser;
-                console.log(userId);
-                var promise = UserService.findUserById(userId);
-                promise.success(function (user) {
-                    currentUser = user;
-                });
-
-                //update user with articleId added to favorites list
-                currentUser.favorites.add(article._id);
-
-                var promise = UserService.updateUser(currentUser);
-                promise.success(function (updatedUser) {
-                    console.log("updatedUser");
-                    console.log(updatedUser);
-                })
-
-            }
-            else{
-                var promise = NewsArticleService.createArticle(article);
-                promise.success(function (response) {
-                    console.log(response);
-                    //add article id to user's favorites list
-                })
-            }
-        }*/
-
+        // function opens a separate tab in browser and navigates to the article source on external websites
         function gotoArticle(articleUrl) {
             $window.open(articleUrl);
         }

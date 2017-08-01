@@ -1,5 +1,6 @@
 /**
  * Created by mayank on 12/9/16.
+ * Controller to display news feeds as per the selected source in news sources page
  */
 
 (function() {
@@ -9,29 +10,29 @@
 
     function NewsFeedsController($routeParams, $location, NewsFeedsService, $window)
     {
-        console.log("inside news feeds controller");
         var vm = this;
         var cnt = $routeParams.cnt;
         var cat = $routeParams.cat;
         var sid = $routeParams.sid;
 
+        // initializations on page load
         function init() {
             vm.dispNewsDetails = dispNewsDetails;
+            vm.sourceName = localStorage.getItem("sourceName");
         }
         init();
 
+        // fetching sid from current route params
         var sid = $routeParams.sid;
 
         var promise = NewsFeedsService.fetchNewsById(sid);
         promise.success(function (newsFeeds) {
-            console.log(newsFeeds);
             vm.newsFeeds = newsFeeds;
         });
 
+        // function to redirect to display specific news article details
         function dispNewsDetails(article) {
-            console.log(article);
             var userId = $routeParams.uid;
-            console.log(userId);
             var articleClicked = {"article": article, "comments":[]};
             localStorage.setItem("articleClicked", JSON.stringify(articleClicked));
             if(typeof userId !== "undefined"){

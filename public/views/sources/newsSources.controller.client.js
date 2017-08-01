@@ -54,7 +54,7 @@
         // function - redirects to news feeds page
         function getNewsFeeds(newsSource)
         {
-            console.log(newsSource);
+            localStorage.setItem("sourceName", newsSource.name);
             var cnt = newsSource.country;
             var cat = newsSource.category;
             var sid = newsSource.id;
@@ -69,8 +69,6 @@
         // returns the news sources as per selected country and category
         function getSources(category)
         {
-            console.log("getsources called");
-            console.log(category);
             var result = [];
             for(var s in vm.sources.sources)
             {
