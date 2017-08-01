@@ -9,9 +9,11 @@
 
     function NewsSourcesController($routeParams, $location, NewsSourcesService, $window)
     {
-        console.log("inside news sources controller");
+        // initializing model with current object
         var vm = this;
 
+
+        // on page load
         function init() {
             vm.getSources = getSources;
             vm.getNewsFeeds = getNewsFeeds;
@@ -128,12 +130,6 @@
             }
             return true;
         }
-
-        function getFavicon(url){
-            return "https://icons.better-idea.org/icon?url="+url+"&size=80..120..200";
-        }
-
-
 
         /*console.log($routeParams);
         var vm = this;
