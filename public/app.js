@@ -3,7 +3,6 @@
  */
 
 (function (){
-    console.log("hi");
     angular
         .module("NewsApp", ["ngRoute"]);
 })();

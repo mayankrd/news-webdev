@@ -8,7 +8,6 @@
         .factory("NewsSearchService", NewsSearchService)
 
     function NewsSearchService($http,$q) {
-        console.log("NewsSearchService");
         var api = {
 
             searchNewsByQuery: searchNewsByQuery
@@ -16,6 +15,7 @@
 
         return api;
 
+        // function to search for articles on Microsoft API for the searched query
         function searchNewsByQuery(query) {
             var deferred = $q.defer();
             var req = {

@@ -6,7 +6,6 @@
     angular.module("NewsApp") .config(Config);
 
     function Config($routeProvider) {
-        console.log("inside route provider");
         $routeProvider
 
             // routing for logged in user

@@ -35,8 +35,6 @@
         // function to toggle flags to control logout and login visibility
         function logoutUser() {
             localStorage.removeItem("loggedInUser");
-            console.log("loggedOut user");
-            console.log(JSON.parse(localStorage.getItem("loggedInUser")));
             vm.loggedInUserAlert = false;
             $window.location.reload();
             $location.url("/sources");
@@ -55,7 +53,6 @@
 
         // function to redirect user to home page on clicking home icon
         function gotoHome() {
-            console.log("goto home");
             var userId = $routeParams.uid;
             if(typeof userId !== "undefined"){
                 $location.url("/sources/user/" + userId);
@@ -102,7 +99,6 @@
         // function to get news feeds based on selected news source
         function getNewsFeeds(newsSource)
         {
-            console.log(newsSource);
             var cnt = newsSource.country;
             var cat = newsSource.category;
             var sid = newsSource.id;
@@ -117,8 +113,6 @@
         // returns the news sources as per selected country and category
         function getSources(category)
         {
-            console.log("getsources called");
-            console.log(category);
             var result = [];
             for(var s in vm.sources.sources)
             {
@@ -149,10 +143,8 @@
             var results = [];
             for (var s in sources.sources)
             {
-                //console.log(sources.sources[s].category);
                 results.push(sources.sources[s].category);
             }
-            console.log(results);
             return removeDuplicates(results);
         }
 

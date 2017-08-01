@@ -12,7 +12,6 @@
         // initializing model with current object
         var vm = this;
 
-
         // on page load
         function init() {
             vm.getSources = getSources;
@@ -39,10 +38,7 @@
 
         // setting flag for logout, login and profile buttons visibility
         function setUser(userId) {
-            console.log("called");
-            console.log(userId);
             if(typeof userId === "undefined"){
-                console.log("inside");
                 vm.logoutLink = false;
             }
             else {
@@ -98,7 +94,6 @@
             var results = [];
             for (var s in sources.sources)
             {
-                //console.log(sources.sources[s].category);
                 results.push(sources.sources[s].category);
             }
 
