@@ -61,7 +61,7 @@
                 $location.url("/sources/user/" + userId);
             }
             else{
-                $location.url("/sources");
+                $location.url("/sources/general");
             }
         }
 

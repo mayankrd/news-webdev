@@ -12,3 +12,7 @@ body {
 a {
 	cursor: pointer;
 }
+
+#wgtmsr{
+	width:200px; height:47px;
+}

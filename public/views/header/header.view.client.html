@@ -11,7 +11,7 @@
             </button>
             <!--<a class="navbar-brand" href="/#/">NEWS NEST</a>-->
             <a ng-click="model.gotoHome()" class="btn btn-info btn-lg">
-                <span class="glyphicon glyphicon-home"></span> Home
+                <span class="glyphicon glyphicon-home"></span>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,8 +24,8 @@
 
                             <div class="btn-group" role="group">
 
-                                <select ng-model="model.selectedCategory" ng-options="x for x in model.categories" class="btn btn-default">
-                                    <option value="">Category.</option>
+                                <select ng-model="model.selectedCategory" ng-options="x for x in model.categories" class="btn btn-default" id="wgtmsr">
+                                    <option value="">Select Category</option>
                                 </select>
 
                             </div>
@@ -33,8 +33,6 @@
                             <a ng-click="model.showNewsSources(model.selectedCategory)" type="button" class="btn btn-default btn-success">Go!</a>
 
                         </div>
-                       <!-- <button type="submit" class="btn btn-default">Submit</button>-->
-
                     </form>
                 </li>
             </ul>
