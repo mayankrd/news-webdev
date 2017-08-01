@@ -9,10 +9,11 @@
 
     function HeaderController($routeParams, $location, NewsSourcesService, UserService, NewsSearchService, $window)
     {
-        console.log("inside HeaderController");
+        // setting model to current object
         var vm = this;
         var userId = $routeParams.uid;
 
+        // call to function to fetch all news sources
         var promise = NewsSourcesService.fetchAllSources();
         promise.success(function (sources) {
             vm.sources = sources;
@@ -20,17 +21,18 @@
             vm.categories = getCategories(sources);
         });
 
+        // on page load initializations
         function init() {
             vm.getSources = getSources;
             vm.getNewsFeeds = getNewsFeeds;
             vm.showNewsSources = showNewsSources;
             vm.gotoHome = gotoHome;
-            //vm.setUser = setUser($routeParams.uid);
             vm.searchNews = searchNews;
             vm.logoutUser = logoutUser;
         }
         init();
-        
+
+        // function to toggle flags to control logout and login visibility
         function logoutUser() {
             localStorage.removeItem("loggedInUser");
             console.log("loggedOut user");
@@ -40,12 +42,8 @@
             $location.url("/sources");
         }
 
+        // function to retrieve news search results as per input query
         function searchNews(query) {
-           /*NewsSearchService.searchNewsByQuery(query).then(function (res) {
-                console.log(res)
-            });
-            console.log(promise);*/
-
             var uid = $routeParams.uid;
             if(typeof uid !== "undefined"){
                 $location.url('/user/' +uid+ '/search/'+ query);
@@ -54,7 +52,8 @@
                 $location.url('/search/' + query);
 
         }
-        
+
+        // function to redirect user to home page on clicking home icon
         function gotoHome() {
             console.log("goto home");
             var userId = $routeParams.uid;
@@ -66,16 +65,10 @@
             }
         }
 
+        // function to set current user status flags
         function setCurrentUser() {
-            console.log($location.absUrl());
             //todo routeparam not having userId
-            console.log($routeParams.uid);
-            console.log("inisde setCurrentUser");
-
             var loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-            console.log("loggedIn user");
-            console.log(loggedInUser);
-
             if(loggedInUser !== null) {
                 vm.loggedInUserAlert = true;
                     vm.userId = loggedInUser._id;
@@ -84,7 +77,7 @@
         }
         setCurrentUser();
 
-
+        // function to display news sources based on selected category
         function showNewsSources(category) {
             var uid = $routeParams.uid;
             if(typeof uid !== "undefined"){
@@ -95,11 +88,9 @@
 
         }
 
+        // function to set current user id and associated flags
         function setUser(userId) {
-            console.log("called");
-            console.log(userId);
             if(typeof userId === "undefined"){
-                console.log("inside");
                 vm.logoutLink = false;
             }
             else {
@@ -108,6 +99,7 @@
 
         }
 
+        // function to get news feeds based on selected news source
         function getNewsFeeds(newsSource)
         {
             console.log(newsSource);

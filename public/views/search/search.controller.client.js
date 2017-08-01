@@ -1,5 +1,6 @@
 /**
  * Created by mayank on 12/13/16.
+ * Controller - To manipulate news search results view
  */
 
 (function() {
@@ -7,9 +8,8 @@
         .module("NewsApp")
         .controller("NewsSearchController", NewsSearchController);
 
-    function NewsSearchController($routeParams, $location, NewsSearchService)
+    function NewsSearchController($routeParams, NewsSearchService)
     {
-        console.log("inside NewsSearchController controller");
         var vm = this;
         var query = $routeParams.q;
 
@@ -19,6 +19,7 @@
         }
         init();
 
+        // function to search news as per the input keyword
         function searchNews() {
             NewsSearchService.searchNewsByQuery(query).then(function (res) {
                 vm.results = res.data.value;

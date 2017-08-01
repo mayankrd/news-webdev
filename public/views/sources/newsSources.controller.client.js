@@ -21,6 +21,7 @@
         }
         init();
 
+        // fetching all news sources using news source client service
         var promise = NewsSourcesService.fetchAllSources();
             promise.success(function (sources) {
                 vm.sources = sources;
@@ -36,6 +37,7 @@
 
             });
 
+        // setting flag for logout, login and profile buttons visibility
         function setUser(userId) {
             console.log("called");
             console.log(userId);
@@ -49,6 +51,7 @@
 
         }
 
+        // function - redirects to news feeds page
         function getNewsFeeds(newsSource)
         {
             console.log(newsSource);
@@ -130,49 +133,6 @@
             }
             return true;
         }
-
-        /*console.log($routeParams);
-        var vm = this;
-        var userId = parseInt($routeParams.uid);
-        vm.userId = userId;
-        vm.updateProfile = updateProfile;
-        console.log(userId);
-
-        function init()
-        {
-            UserService.findUserById(userId)
-                .success(function(user) {
-                    if (user != '0') {
-                        vm.user = user;
-                        console.log(user);
-                    }
-                })
-                .error (function() {
-                    vm.alert = "Could not retrieve user";
-                });
-        }
-        init();
-
-        function updateProfile()
-        {
-            var promise = UserService.updateUser(userId, vm.user);
-            promise.success(function(user){
-                if(user === '0') {
-                    vm.alert = "Unable to update user";
-                } else {
-                    console.log("updated user : "+user);
-                    $location.url("/user/"+vm.userId);
-                }
-            });
-        }
-        /!*
-         function updateProfile()
-         {
-         UserService.updateUser(user);
-         $location.url("/user/"+vm.userId);
-         console.log(user);
-         //$location.url("/user/" + vm.userId + "/website");
-         }*!/*/
     };
 
 })();
