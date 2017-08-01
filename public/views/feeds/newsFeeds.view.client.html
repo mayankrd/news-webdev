@@ -56,9 +56,40 @@
 
 
 <!-- Page Content -->
+<!--<div class="container">-->
+
+    <!--&lt;!&ndash; Page Header &ndash;&gt;-->
+    <!--<div class="row">-->
+        <!--<div class="col-lg-12">-->
+            <!--<h1 class="page-header">{{model.newsFeeds.source}}-->
+                <!--<small>Latest News</small>-->
+            <!--</h1>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.row &ndash;&gt;-->
+    <!--&lt;!&ndash; Projects Row &ndash;&gt;-->
+    <!--<div class="row">-->
+        <!--<div ng-repeat="article in model.newsFeeds.articles" class="col-md-4 portfolio-item">-->
+
+                <!--<img class="img-responsive" src={{article.urlToImage}} alt="">-->
+            <!--<h3>-->
+                <!--<a ng-click="model.dispNewsDetails(article)">{{article.title}}</a>-->
+            <!--</h3>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.row &ndash;&gt;-->
+
+    <!--<hr>-->
+
+    <!--<hr>-->
+
+<!--</div>-->
+<!-- /.container -->
+
+<!-- Page Content -->
 <div class="container">
 
-    <!-- Page Header -->
+    <!-- Page Heading -->
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">{{model.newsFeeds.source}}
@@ -67,21 +98,24 @@
         </div>
     </div>
     <!-- /.row -->
-    <!-- Projects Row -->
-    <div class="row">
-        <div ng-repeat="article in model.newsFeeds.articles" class="col-md-4 portfolio-item">
 
-                <img class="img-responsive" src={{article.urlToImage}} alt="">
+    <!-- Project One -->
+    <div class="row">
+        <div ng-repeat="article in model.newsFeeds.articles">
+        <div class="col-md-5">
+            <img class="img-responsive" src={{article.urlToImage}} alt="" height="200" width="400"> </img>
+        </div>
+        <div class="col-md-7">
             <h3>
                 <a ng-click="model.dispNewsDetails(article)">{{article.title}}</a>
             </h3>
+            <!--<h4>Subheading</h4>-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>-->
+            <!--<a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>-->
+        </div>
+            <div class="col-md-12"><hr></div>
         </div>
     </div>
     <!-- /.row -->
-
-    <hr>
-
-    <hr>
-
 </div>
 <!-- /.container -->

@@ -41,23 +41,38 @@
 
 <div class="container">
 <!-- News Sources Row -->
-    <div class="row">
+    <!--<div class="row">-->
 
-        <div ng-repeat="source in model.newssources" class="col-md-6 portfolio-item">
-            <a ng-click="model.getNewsFeeds(source)">
-                <img class="img-responsive" src="{{source.urlsToLogos.small}}" alt="">
-            </a>
-            <h3>
-                <a ng-click="model.getNewsFeeds(source)">{{source.name}}</a>
-            </h3>
-            <p>{{source.description}}</p>
+        <!--<div ng-repeat="source in model.newssources" class="col-md-6 portfolio-item">-->
+            <!--<a ng-click="model.getNewsFeeds(source)">-->
+                <!--<img class="img-responsive" src="https://icons.better-idea.org/icon?url={{source.url}}&size=80..120..200" alt="">-->
+            <!--</a>-->
+            <!--<h3>-->
+                <!--<a ng-click="model.getNewsFeeds(source)">{{source.name}}</a>-->
+            <!--</h3>-->
+            <!--<p>{{source.description}}</p>-->
+        <!--</div>-->
+
+        <!-- First Featurette -->
+        <div ng-repeat="source in model.newssources">
+            <div class="featurette row" id="about">
+
+                <div class="col-md-4">
+                    <img class="featurette-image img-circle img-responsive pull-left" src="https://icons.better-idea.org/icon?url={{source.url}}&size=80..100..120 ">
+                </div>
+                <div class="col-md-8">
+                    <h2 class="featurette-heading">
+                        <span class="text-muted"><a ng-click="model.getNewsFeeds(source)">{{source.name}}</a></span>
+                    </h2>
+                    <p class="lead">{{source.description}}</p>
+                </div>
+
+            </div>
+            <hr class="featurette-divider">
         </div>
 
-    </div>
+    <!--</div>-->
 </div>
-<!-- /.row -->
-<hr>
-
 
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>

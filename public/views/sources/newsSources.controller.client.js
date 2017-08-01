@@ -129,6 +129,10 @@
             return true;
         }
 
+        function getFavicon(url){
+            return "https://icons.better-idea.org/icon?url="+url+"&size=80..120..200";
+        }
+
 
 
         /*console.log($routeParams);
