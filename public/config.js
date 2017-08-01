@@ -74,8 +74,8 @@
             // routing for non-logged in user
 
             .when("/", {
-                templateUrl: "/views/user/login/login.view.client.html",
-                controller: "LoginUserController",
+                templateUrl: "/views/sources/newsSources.view.client.html",
+                controller: "NewsSourcesController",
                 controllerAs: "model"
             })
 
