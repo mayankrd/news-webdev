@@ -1,4 +1,6 @@
-# NewsNest - Your ultimate news destination [![Node.js](https://cdn.rawgit.com/aleen42/badges/master/src/node.svg)](#)
+[![Node.js](https://cdn.rawgit.com/aleen42/badges/master/src/node.svg)](#) [![angular](https://rawgit.com/aleen42/badges/master/src/angular.svg)](https://cdn.rawgit.com/aleen42/badges/master/src/angular.svg) [![npm](https://rawgit.com/aleen42/badges/master/src/npm.svg)](https://cdn.rawgit.com/aleen42/badges/master/src/npm.svg) ![Heroku](http://heroku-badge.herokuapp.com/?app=newsnest&root=/)
+# NewsNest -  Your ultimate news destination
+
 
 Biggest compilation of top news from across a variety of news sources based on selected category. Example of news categories are General, Sports, Technology, Business, etc. The service compiles over 70 news sources including CNN, The New York Times, Telegraph, Tech Crunch, Hacker News and many more.
 
