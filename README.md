@@ -1,4 +1,4 @@
-# NewsNest - Your ultimate news destination
+# NewsNest - Your ultimate news destination [![Node.js](https://cdn.rawgit.com/aleen42/badges/master/src/node.svg)](#)
 
 Biggest compilation of top news from across a variety of news sources based on selected category. Example of news categories are General, Sports, Technology, Business, etc. The service compiles over 70 news sources including CNN, The New York Times, Telegraph, Tech Crunch, Hacker News and many more.
 
@@ -6,7 +6,7 @@ Biggest compilation of top news from across a variety of news sources based on s
 
 https://newsnest.herokuapp.com
 
-## Built With
+## Built With 
 
 * [AngularJS](https://angularjs.org/) - The Superheroic JavaScript MVW Framework
 * [Node](https://maven.apache.org/) - Node.js® is a JavaScript runtime
