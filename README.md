@@ -36,5 +36,4 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was referred 
-* Prof. Jose Annunziato (https://github.com/jannunzi) for wonderful lectures at NEU
+* Hat tip to anyone who's code was referred
