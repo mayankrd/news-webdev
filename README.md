@@ -1,6 +1,6 @@
-# NewsNest
+# NewsNest - Your ultimate news destination
 
-Biggest compilation of top news from across a variety of News sources based on selected category. Example of news categories are General, Sports, Technology, Business, etc. The service compiles over 70 news sources including CNN, The New York Times, Telegraph, Tech Crunch, Hacker News, etc.
+Biggest compilation of top news from across a variety of news sources based on selected category. Example of news categories are General, Sports, Technology, Business, etc. The service compiles over 70 news sources including CNN, The New York Times, Telegraph, Tech Crunch, Hacker News and many more.
 
 ## Live On
 
@@ -34,5 +34,5 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Prof. Jose Annunziato (https://github.com/jannunzi)
+* Hat tip to anyone who's code was referred 
+* Prof. Jose Annunziato (https://github.com/jannunzi) for wonderful lectures at NEU
