@@ -1,4 +1,4 @@
-[![Node.js](https://cdn.rawgit.com/aleen42/badges/master/src/node.svg)](#) [![angular](https://rawgit.com/aleen42/badges/master/src/angular.svg)](#) [![npm](https://rawgit.com/aleen42/badges/master/src/npm.svg)](#) ![Heroku](http://heroku-badge.herokuapp.com/?app=newsnest&root=/)
+[![Node.js](https://cdn.rawgit.com/aleen42/badges/master/src/node.svg)](#) [![angular](https://rawgit.com/aleen42/badges/master/src/angular.svg)](#) [![npm](https://rawgit.com/aleen42/badges/master/src/npm.svg)](#) [![Heroku](http://heroku-badge.herokuapp.com/?app=newsnest&root=/)](#)
 # NewsNest -  Your ultimate news destination
 
 
